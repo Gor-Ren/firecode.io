@@ -8,7 +8,8 @@ Created on Sat Sep  2 22:03:16 2017
 def fib(n):
     """ Calculates the nth number in the Fibonacci sequence.
     
-    Uses dynamic programming to achieve O(n) time complexity.
+    Uses dynamic programming to achieve O(n) time complexity. Assumes n is a
+    non-negative integer.
     
     Args:
         n: A non-negative int
