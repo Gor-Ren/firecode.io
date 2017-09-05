@@ -10,13 +10,13 @@ def dec_to_bin(number):
     """Converts a positive int to its binary representation string.
 
     Args:
-        number: a positive integer
         number: A positive integer.
 
     Returns:
         A string of the binary representation of number in little-endian format,
         with no padding.
     """
+    bin_string = ''
 
     while number > 0:
         bin_string = str(number%2) + bin_string
