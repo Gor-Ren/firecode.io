@@ -11,11 +11,23 @@ def dec_to_bin(number):
 
     Args:
         number: a positive integer
+        number: A positive integer.
 
     Returns:
         A string of the binary representation of number in little-endian format,
-        with no padding
+        with no padding.
     """
+
+    while number > 0:
+        bin_string = str(number%2) + bin_string
+        number /= 2
+
+    return bin_string
+
+
+## Alternative solution (old; less readable)
+def dec_to_bin1(number):
+    """Converts a positive int to its binary representation string."""
     result = ''
     quotient = number
 
