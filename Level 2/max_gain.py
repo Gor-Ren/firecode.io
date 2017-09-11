@@ -11,15 +11,16 @@ def max_gain(input_list):
 
     An implementation which traverses the list only once to achieve O(n) time complexity.
 
-    Maximum gain is defined as the maximum difference between two elements in a list
-    such that the larger element appears after the smaller element. If no gain is possible,
-    returns 0.
+    Maximum gain is defined as the maximum difference between two elements in a
+    list such that the larger element appears after the smaller element. If no
+    gain is possible, returns 0.
 
     Args:
         input_list: A list of ints.
 
     Returns:
-        An integer, the maximum gain between two elements in input_list
+        An integer, the maximum gain between two elements in input_list or 0 if
+        there is no positive gain.
     """
     smallest = input_list[0]
     max_g = 0
@@ -38,15 +39,16 @@ def max_gain1(input_list):
 
     A brute force implementation with O(n^2) time complexity.
 
-    Maximum gain is defined as the maximum difference between two elements in a list
-    such that the larger element appears after the smaller element. If no gain is possible,
-    returns 0.
+    Maximum gain is defined as the maximum difference between two elements in a
+    list such that the larger element appears after the smaller element. If no
+    gain is possible, returns 0.
 
     Args:
         input_list: A list of ints.
 
     Returns:
-        An integer, the maximum gain between two elements in input_list
+        An integer, the maximum gain between two elements in input_list or 0 if
+        there is no positive gain.
     """
     max_g = 0
 
