@@ -13,7 +13,8 @@ def merge_ranges(input_range_list):
     merges them into a single Range. Returns the merged list.
 
     A single-pass solution which preprocesses input by sorting to achieve
-    O(nlogn) time complexity.
+    O(nlogn) time complexity. It feels like there is still optimisation to be
+    done to simplify the nested while loops.
 
     Args:
         input_range_list: A list of Ranges to be merged.
@@ -25,8 +26,8 @@ def merge_ranges(input_range_list):
     #  pass. Sorting in reverse order allows merged ranges to be deleted from
     #  end of list in O(1) time.
     rng_stack = sorted(input_range_list,
-                           key=lambda range_el: range_el.lower_bound,
-                           reverse=True)
+                       key=lambda rng: rng.lower_bound,
+                       reverse=True)
 
     result = []
 
@@ -37,7 +38,7 @@ def merge_ranges(input_range_list):
 
         merged_rng = rng_stack.pop()
 
-        while True:
+        while rng_stack:
             if rng_stack[-1].upper_bound <= merged_rng.upper_bound:
                 # range is completely encompassed by merged_range; delete it
                 del rng_stack[-1]
@@ -74,11 +75,11 @@ def merge_ranges1(input_range_list):
 
     def is_overlap(range1, range2):
         """Helper. Determines if two ranges overlap; returns bool."""
-        return ( (range1.lower_bound <= range2.lower_bound and
-                range1.upper_bound >= range2.lower_bound)
+        return ((range1.lower_bound <= range2.lower_bound and
+                 range1.upper_bound >= range2.lower_bound)
                 or
                 (range1.lower_bound <= range2.upper_bound and
-                range1.upper_bound >= range2.upper_bound) )
+                 range1.upper_bound >= range2.upper_bound))
 
     while range_list:
         if len(range_list) == 1: # edge case: cannot merge single Range
@@ -92,9 +93,9 @@ def merge_ranges1(input_range_list):
             if is_overlap(merged_range, range_list[i]):
                 # expand the merged range
                 merged_range.lower_bound = min(merged_range.lower_bound,
-                                                range_list[i].lower_bound)
+                                               range_list[i].lower_bound)
                 merged_range.upper_bound = max(merged_range.upper_bound,
-                                                range_list[i].upper_bound)
+                                               range_list[i].upper_bound)
                 # record the index of the merged range
                 merged_idxs.append(i)
 
