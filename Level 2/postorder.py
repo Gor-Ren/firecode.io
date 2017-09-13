@@ -21,10 +21,11 @@ class BinaryTree:
         """Populates a list with data from tree in postorder.
 
         The method traverses the binary tree in postorder and appends the data
-        contained in each node to post_ordered_list.
+        contained in each node to global variable post_ordered_list, as required
+        by the challenge.
 
-        Returns:
-            A list, containing the data of all tree nodes in postorder.
+        Side-Effects:
+            Appends data from all tree nodes to pre_ordered_list in postorder.
         """
         if self.left_child:
             self.left_child.postorder()
