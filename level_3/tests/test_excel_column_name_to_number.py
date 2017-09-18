@@ -7,10 +7,7 @@ Created on Sun Sep 17 21:20:09 2017
 
 
 import pytest
-import sys
-
-def test_None():
-    assert excel_column_name_to_number(None) == 0
+from level_3.excel_column_name_to_number import excel_column_name_to_number
 
 def test_A():
     assert excel_column_name_to_number('A') == 1
