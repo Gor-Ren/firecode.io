@@ -9,8 +9,6 @@ Created on Sun Sep 17 21:20:09 2017
 import pytest
 import sys
 
-from .. import excel_column_name_to_number
-
 def test_None():
     assert excel_column_name_to_number(None) == 0
 
