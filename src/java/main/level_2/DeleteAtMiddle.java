@@ -13,46 +13,20 @@ import java.util.Optional;
  */
 public class DeleteAtMiddle {
 
-    // horrible, long, stateful solution
     public static ListNode deleteAtMiddle(ListNode head, int position) {
-        final ListNode result;
         if (position < 1) {
-            throw new IllegalArgumentException("Position must be positive and non-negative");
+            throw new IllegalArgumentException(
+                    "Position must be positive and nonzero: " + position
+            );
         } else if (head == null) {
-            // empty list
-            result = null;
+            return null;
         } else if (position == 1) {
-            // delete head
-            ListNode next = head.next;
-            head.next = null;
-            result = next;
+            return head.next;
         } else {
-            position--;
-            ListNode previous = head;
-            ListNode current = head.next;
-            ListNode next = current == null ? null : current.next;
-            while (position != 1 && current != null) {
-                // ratchet all values to next element
-                ListNode tmp = next == null ? null : next.next;
-                previous = current;
-                current = next;
-                next = tmp;
-                position--;
-            }
-            if (current == null) {
-                // position was out of bounds; return original list
-                result = head;
-            } else {
-                // link previous to next, skipping current to "delete" it
-                previous.next = next;
-                result = head;
-            }
+            head.next = deleteAtMiddle(head.next, position - 1);
+            return head;
         }
-        return result;
     }
-
-
-
 
     static class ListNode {
         int data;

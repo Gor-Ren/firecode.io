@@ -28,7 +28,6 @@ public class DeleteAtMiddleTest {
         DeleteAtMiddle.ListNode result = DeleteAtMiddle.deleteAtMiddle(first, 1);
 
         assertSame(second, result);
-        assertNull(first.next);
     }
 
     @Test
